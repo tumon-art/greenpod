@@ -11,12 +11,21 @@ interface RssTypes {
     link: string;
     image: string;
     category: [];
-    items: [];
+    items: [
+      {
+        title: string;
+        description: string;
+        published: string;
+        created: string;
+        category: [];
+        content: string;
+        enclosures: [{ lenght: string; type: string; url: string }];
+      }
+    ];
   };
 }
 
 export default function ShowPod({ data }: RssTypes) {
-  console.log(data);
   return (
     <main className={styles.main}>
       <div className={styles.mainHead}>
@@ -31,6 +40,20 @@ export default function ShowPod({ data }: RssTypes) {
           <h3>{data.title}</h3>
         </Link>
       </div>
+
+      <audio src={data.items[0].enclosures[0].url} preload="metadata"></audio>
+
+      <button>30sec</button>
+      <button>play/pause</button>
+      <button>30sec</button>
+      {/* CURRENT TIME  */}
+      <div> 0:00</div>
+      {/* PROGRESS BAR */}
+      <div>
+        <input type="range" />
+      </div>
+      {/* DURATION */}
+      <div>3:00</div>
     </main>
   );
 }
