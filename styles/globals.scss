@@ -1,4 +1,5 @@
 :root {
+  --bg: #0b1a09;
   --headerBg: #029e23;
   --textPrimary: whitesmoke;
   --boxShadow: #055e;
@@ -8,6 +9,8 @@ html,
 body {
   padding: 0;
   margin: 0;
+  color: var(--textPrimary);
+  background-color: var(--bg);
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
