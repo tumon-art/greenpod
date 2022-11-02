@@ -10,6 +10,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
+      <head>
+        <title>Create Next App</title>
+        <meta name="description" content="GreenPod" />
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body>{children}</body>
     </html>
   );
