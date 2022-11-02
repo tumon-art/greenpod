@@ -7,13 +7,8 @@ const inter = Inter();
 interface Props {
   children: React.ReactNode;
 }
-async function getData() {
-  const res = await fetch("http://localhost:3000/api/hello");
-  return res.json();
-}
 
-export default async function RootLayout({ children }: Props) {
-  const data = await getData();
+export default function RootLayout({ children }: Props) {
   return (
     <html lang="en" className={inter.className}>
       <head>
@@ -22,7 +17,7 @@ export default async function RootLayout({ children }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body>
-        <Header data={data} />
+        <Header />
         {children}
       </body>
     </html>
