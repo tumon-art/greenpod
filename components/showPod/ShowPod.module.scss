@@ -1,0 +1,16 @@
+.main {
+  margin: 2em 0;
+}
+.mainHead {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.mainImg {
+  object-fit: cover;
+
+  border: 1px solid rebeccapurple;
+  border-radius: 50%;
+}
