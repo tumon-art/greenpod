@@ -2,7 +2,6 @@ import type { NextApiRequest, NextApiResponse } from "next";
 const { parse } = require("rss-to-json");
 
 type Data = {
-  name: string;
   data: any;
 };
 
@@ -15,11 +14,11 @@ export default async function handler(
   switch (method) {
     case "GET":
       try {
-        var rss = await parse("https://changelog.com/jsparty/feed");
+        var rss = await parse("https://feeds.buzzsprout.com/1014445.rss");
 
-        if (rss) res.status(200).json({ name: "John Doe", data: rss });
+        if (rss) res.status(200).json({ data: rss });
       } catch (err) {
-        res.status(400).json({ name: "John Doe", data: "error" });
+        res.status(400).json({ data: "error" });
       }
       break;
 
@@ -33,7 +32,7 @@ export default async function handler(
     //   break;
 
     default:
-      res.status(200).json({ name: "John Doe", data: "default error" });
+      res.status(400).json({ data: "default error" });
       break;
   }
 }

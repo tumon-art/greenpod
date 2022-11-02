@@ -1,0 +1,12 @@
+.main {
+  background: var(--headerBg);
+  background: linear-gradient(90deg, #00851e 11%, #029e23 68%);
+  box-shadow: 0px 1px 10px 1px var(--boxShadow);
+}
+
+.name {
+  margin: 0;
+  padding: 0.5em 0;
+  text-align: center;
+  color: var(--textPrimary);
+}
