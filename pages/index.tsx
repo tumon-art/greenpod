@@ -31,6 +31,7 @@ export default function Home({ data }: { data: any }) {
   return (
     <main>
       <br></br>
+
       <ShowPod data={data} />
     </main>
   );
