@@ -21,7 +21,7 @@ interface RssTypes {
 }
 
 export async function getStaticProps() {
-  const res = await fetch("http://localhost:3000/api/hello");
+  const res = await fetch("https://newsstand.fly.dev/greenpod");
 
   const data = await res.json();
   return { props: { data: data.data } };
