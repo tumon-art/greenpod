@@ -143,7 +143,6 @@ export default function ShowPod({ data }: { data: RssTypes }) {
       {/* <div> */}
       {/* <input type="range" /> */}
       {/* </div> */}
-
       {/* <div>{calculateTime(duration)}</div> */}
     </main>
   );
