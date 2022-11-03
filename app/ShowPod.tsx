@@ -34,7 +34,7 @@ export default function ShowPod() {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:3000/api/hello")
+    fetch("https://greenpod-five.vercel.app/api/hello")
       .then((res) => res.json())
       .then((data) => {
         setData(data);
