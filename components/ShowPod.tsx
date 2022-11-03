@@ -22,23 +22,24 @@ interface RssTypes {
   ];
 }
 
-export default function ShowPod() {
+export default function ShowPod({ data }: { data: RssTypes }) {
   const [isPlaying, setisPlaying] = useState<boolean>(false);
   const [duration, setDuration] = useState<number>(0);
-  const [data, setData] = useState<RssTypes | null>(null);
-  const [isLoading, setLoading] = useState(false);
+  // const [data, setData] = useState<RssTypes | null>(null);
+  // const [isLoading, setLoading] = useState(false);
 
   const audioPlayer = useRef<HTMLAudioElement>(null);
 
-  useEffect(() => {
-    setLoading(true);
-    fetch("http://localhost:3000/api/hello")
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data.data);
-        setLoading(false);
-      });
-  }, []);
+  // useEffect(() => {
+  //   setLoading(true);
+  //   fetch("http://localhost:3000/api/hello")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setData(data.data);
+  //       console.log([data.data]);
+  //       setLoading(false);
+  //     });
+  // }, []);
 
   useEffect(() => {
     // if (audioPlayer.current) {
@@ -66,8 +67,8 @@ export default function ShowPod() {
     return `${returnedMinutes}:${returnedSeconds}`;
   };
 
-  if (isLoading) return <p>Loading...</p>;
-  if (!data) return <p>No profile data</p>;
+  // if (isLoading) return <p>Loading...</p>;
+  // if (!data) return <p>No profile data</p>;
 
   return (
     <main className={styles.main}>
@@ -87,7 +88,7 @@ export default function ShowPod() {
       {/* === AUDIO PLAYER === */}
 
       <div>
-        <audio
+        {/* <audio
           ref={audioPlayer}
           src={data.items[0].enclosures[0].url}
           onLoadedMetadata={() => {
@@ -97,13 +98,12 @@ export default function ShowPod() {
             }
           }}
           preload="metadata"
-        ></audio>
+        ></audio> */}
       </div>
 
-      {/* {data.items
-        .slice(0, 1)
-        .map(
-          (items: {
+      {data.items.slice(0, 3).map(
+        (
+          items: {
             title: string;
             description: string;
             published: string;
@@ -111,26 +111,28 @@ export default function ShowPod() {
             category: [];
             content: string;
             enclosures: [{ lenght: string; type: string; url: string }];
-          }) => {
-            return (
-              <div>
-                <audio
-                  controls
-                  ref={audioPlayer}
-                  src={items.enclosures[0].url}
-                  onLoadedMetadata={() => {
-                    if (audioPlayer.current) {
-                      const seconds = Math.floor(audioPlayer.current!.duration);
-                      setDuration(seconds);
-                    }
-                  }}
-                  preload="metadata"
-                ></audio>
-                <h2> {items.title} </h2>
-              </div>
-            );
-          }
-        )} */}
+          },
+          i: any
+        ) => {
+          return (
+            <div key={i}>
+              <audio
+                controls
+                ref={audioPlayer}
+                src={items.enclosures[0].url}
+                onLoadedMetadata={() => {
+                  if (audioPlayer.current) {
+                    const seconds = Math.floor(audioPlayer.current!.duration);
+                    setDuration(seconds);
+                  }
+                }}
+                preload="metadata"
+              ></audio>
+              <h2> {items.title} </h2>
+            </div>
+          );
+        }
+      )}
 
       <button onClick={togglePlayPause}>{isPlaying ? "pause" : "play"}</button>
       {/* <button>30sec</button> */}

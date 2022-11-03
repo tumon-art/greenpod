@@ -1,17 +1,39 @@
 import styles from "../styles/Home.module.scss";
-// import ShowPod from "../components/ShowPod";
+import ShowPod from "../components/ShowPod";
 
-// async function getData() {
-//   const res = await fetch("http://localhost:3000/api/hello");
-//   return res.json();
-// }
+interface RssTypes {
+  title: string;
+  description: string;
+  link: string;
+  image: string;
+  category: [];
+  items: [
+    {
+      title: string;
+      description: string;
+      published: string;
+      created: string;
+      category: [];
+      content: string;
+      enclosures: [{ lenght: string; type: string; url: string }];
+    }
+  ];
+}
 
-export default async function Home() {
-  // const { data } = await getData();
+export async function getStaticProps() {
+  const res = await fetch("http://localhost:3000/api/hello");
+
+  const data = await res.json();
+
+  console.log(data.data);
+  return { props: { data: data.data } };
+}
+
+export default function Home({ data }: { data: any }) {
   return (
     <main>
-      {/* <ShowPod /> */}
-      <h1> Hell o</h1>
+      <br></br>
+      <ShowPod data={data} />
     </main>
   );
 }
