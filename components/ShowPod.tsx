@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -44,15 +42,15 @@ export default function ShowPod() {
 
   if (isLoading) return <p>Loading...</p>;
   if (!data) return <p>No profile data</p>;
-  const audioPlayer = useRef<HTMLAudioElement>(null);
+  // const audioPlayer = useRef<HTMLAudioElement>(null);
 
-  const togglePlayPause = () => {
-    setisPlaying((p) => !p);
+  // const togglePlayPause = () => {
+  //   setisPlaying((p) => !p);
 
-    if (isPlaying) {
-      audioPlayer.current?.play();
-    } else audioPlayer.current?.pause();
-  };
+  //   if (isPlaying) {
+  //     audioPlayer.current?.play();
+  //   } else audioPlayer.current?.pause();
+  // };
 
   // return (
   //   <main>
@@ -75,11 +73,11 @@ export default function ShowPod() {
       </div>
 
       {/* === AUDIO PLAYER === */}
-      <audio
+      {/* <audio
         ref={audioPlayer}
         src={data.data.items[0].enclosures[0].url}
         preload="metadata"
-      ></audio>
+      ></audio> */}
 
       <div>
         <audio controls>
