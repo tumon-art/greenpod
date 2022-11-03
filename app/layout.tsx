@@ -1,8 +1,8 @@
 import { Inter } from "@next/font/google";
-import Header from "../components/header/Header";
+import Header from "./Header";
 import "../styles/globals.scss";
 
-const inter = Inter();
+const inter = Inter({ subsets: ["latin"] });
 
 interface Props {
   children: React.ReactNode;
