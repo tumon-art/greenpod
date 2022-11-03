@@ -86,7 +86,6 @@ export default function ShowPod({ data }: { data: RssTypes }) {
       </div>
 
       {/* === AUDIO PLAYER === */}
-
       <div>
         {/* <audio
           ref={audioPlayer}
