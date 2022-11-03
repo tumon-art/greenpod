@@ -24,12 +24,11 @@ export async function getStaticProps() {
   const res = await fetch("http://localhost:3000/api/hello");
 
   const data = await res.json();
-
-  console.log(data.data);
   return { props: { data: data.data } };
 }
 
 export default function Home({ data }: { data: any }) {
+  console.log(data);
   return (
     <main>
       <br></br>
