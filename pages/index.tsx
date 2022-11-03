@@ -28,7 +28,6 @@ export async function getStaticProps() {
 }
 
 export default function Home({ data }: { data: any }) {
-  console.log(data);
   return (
     <main>
       <br></br>

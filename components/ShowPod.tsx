@@ -25,21 +25,8 @@ interface RssTypes {
 export default function ShowPod({ data }: { data: RssTypes }) {
   const [isPlaying, setisPlaying] = useState<boolean>(false);
   const [duration, setDuration] = useState<number>(0);
-  // const [data, setData] = useState<RssTypes | null>(null);
-  // const [isLoading, setLoading] = useState(false);
 
   const audioPlayer = useRef<HTMLAudioElement>(null);
-
-  // useEffect(() => {
-  //   setLoading(true);
-  //   fetch("http://localhost:3000/api/hello")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setData(data.data);
-  //       console.log([data.data]);
-  //       setLoading(false);
-  //     });
-  // }, []);
 
   useEffect(() => {
     // if (audioPlayer.current) {
