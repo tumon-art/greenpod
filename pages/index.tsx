@@ -1,25 +1,6 @@
 import styles from "../styles/Home.module.scss";
 import ShowPod from "../components/ShowPod";
 
-interface RssTypes {
-  title: string;
-  description: string;
-  link: string;
-  image: string;
-  category: [];
-  items: [
-    {
-      title: string;
-      description: string;
-      published: string;
-      created: string;
-      category: [];
-      content: string;
-      enclosures: [{ lenght: string; type: string; url: string }];
-    }
-  ];
-}
-
 export async function getStaticProps() {
   const res = await fetch("https://newsstand.fly.dev/greenpod");
 
