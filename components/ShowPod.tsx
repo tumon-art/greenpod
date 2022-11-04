@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import styles from "../styles/ShowPod.module.scss";
 import ShowAudio from "./ShowAudio";
 
@@ -23,6 +23,17 @@ export interface RssTypes {
 }
 
 export default function ShowPod({ data }: { data: RssTypes }) {
+  const [currentPage, setcurrentPage] = useState<number>(1);
+  const [itemsPerPage, setitemsPerPage] = useState<number>(6);
+
+  // Get current items
+  const indexOfLastItem = currentPage * itemsPerPage; // 6
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage; // 0
+  const currentItems: ItemsProps[] = data.items.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
+
   return (
     <main className={styles.main}>
       <div className={styles.mainHead}>
@@ -38,7 +49,7 @@ export default function ShowPod({ data }: { data: RssTypes }) {
         </Link>
       </div>
 
-      {data.items.slice(0, 3).map((items: ItemsProps, i: any) => {
+      {currentItems.map((items: ItemsProps, i: any) => {
         return <ShowAudio items={items} key={i} />;
       })}
     </main>
