@@ -9,8 +9,8 @@ export default function ShowAudio({ items }: { items: ItemsProps }) {
         {/* <audio className={styles.audio} controls preload="metadata"></audio> */}
 
         <audio className={styles.audio} controls preload="metadata">
-          <source src={items.enclosures[0].url} type="audio/mpeg" />
           <source src={items.enclosures[0].url} type="audio/ogg" />
+          <source src={items.enclosures[0].url} type="audio/mpeg" />
         </audio>
       </div>
     </main>
