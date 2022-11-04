@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import styles from "../styles/ShowPod.module.scss";
+import Pagination from "./Pagination";
 import ShowAudio from "./ShowAudio";
 
 export interface ItemsProps {
@@ -24,8 +25,8 @@ export interface RssTypes {
 
 export default function ShowPod({ data }: { data: RssTypes }) {
   const [currentPage, setcurrentPage] = useState<number>(1);
-  const [itemsPerPage, setitemsPerPage] = useState<number>(6);
-
+  const [itemsPerPage, setitemsPerPage] = useState<number>(8);
+  console.log(data.items);
   // Get current items
   const indexOfLastItem = currentPage * itemsPerPage; // 6
   const indexOfFirstItem = indexOfLastItem - itemsPerPage; // 0
@@ -33,6 +34,11 @@ export default function ShowPod({ data }: { data: RssTypes }) {
     indexOfFirstItem,
     indexOfLastItem
   );
+
+  // CHANGE PAGE
+  const paginate = (pageNumber: number) => {
+    setcurrentPage(pageNumber);
+  };
 
   return (
     <main className={styles.main}>
@@ -49,9 +55,18 @@ export default function ShowPod({ data }: { data: RssTypes }) {
         </Link>
       </div>
 
-      {currentItems.map((items: ItemsProps, i: any) => {
-        return <ShowAudio items={items} key={i} />;
-      })}
+      <div className={styles.audioCardHold}>
+        {currentItems.map((items: ItemsProps, i: any) => {
+          return <ShowAudio items={items} key={i} />;
+        })}
+      </div>
+
+      <Pagination
+        currentPage={currentPage}
+        itemsPerPage={itemsPerPage}
+        totalItems={data.items.length}
+        paginate={paginate}
+      />
     </main>
   );
 }

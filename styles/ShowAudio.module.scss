@@ -7,6 +7,7 @@
 }
 .cardHold {
   width: 90%;
+  min-height: 150px;
   border: 6px solid green;
   border-radius: 10px 10px;
   padding: 5px 10px;
@@ -14,14 +15,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 14px 2px green;
 
   @include screen.devices(sm) {
-    width: 80%;
+    width: 60%;
   }
 }
 
 .h4 {
-  word-break: break-all;
+  text-align: center;
 }
 .audio {
   background-color: rgb(21, 249, 35);

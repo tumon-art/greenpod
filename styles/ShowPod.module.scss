@@ -1,3 +1,5 @@
+@use "./screen";
+
 .main {
   margin: 2em 0;
 }
@@ -11,4 +13,12 @@
 .mainImg {
   object-fit: cover;
   border-radius: 50%;
+}
+
+.audioCardHold {
+  display: grid;
+  grid-template-columns: 1fr;
+  @include screen.devices(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

@@ -6,10 +6,12 @@ export default function ShowAudio({ items }: { items: ItemsProps }) {
     <main className={styles.main}>
       <div className={styles.cardHold}>
         <h4 className={styles.h4}> {items.title} </h4>
-        <audio className={styles.audio} controls>
-          <source src={items.enclosures[0].url} type="audio/ogg" />
-          <source src={items.enclosures[0].url} type="audio/mpeg" />
-        </audio>
+        <audio
+          className={styles.audio}
+          src={items.enclosures[0].url}
+          controls
+          preload="metadata"
+        ></audio>
       </div>
     </main>
   );
