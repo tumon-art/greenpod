@@ -10,7 +10,7 @@ export default function ShowAudio({ items }: { items: ItemsProps }) {
           className={styles.audio}
           src={items.enclosures[0].url}
           controls
-          preload="metadata"
+          preload="none"
         ></audio>
       </div>
     </main>
