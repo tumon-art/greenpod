@@ -1,11 +1,12 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { use, useState } from "react";
+import { use, useEffect, useState } from "react";
 import Globe from "../store/svg/Globe";
 import styles from "../styles/ShowPod.module.scss";
 import Pagination from "./Pagination";
 import ShowAudio from "./ShowAudio";
+import useSWR from "swr";
 
 export interface ItemsProps {
   title: string;
@@ -29,16 +30,28 @@ export interface RssTypes {
   items: ItemsProps[];
 }
 
-async function getData() {
-  // const res = await fetch("http://localhost:3000/api/hello");
-  // const res = await fetch("https://newsstand.fly.dev/greenpod");
-  const res = await fetch("https://greenpod-five.vercel.app/api/hello");
-  const { data }: { data: RssTypes } = await res.json();
-  return data;
-}
+// async function getData() {
+//   // const res = await fetch("http://localhost:3000/api/hello");
+//   // const res = await fetch("https://newsstand.fly.dev/greenpod");
+//   const res = await fetch("https://greenpod-five.vercel.app/api/hello");
+//   const { data }: { data: RssTypes } = await res.json();
+//   return data;
+// }
 
 export default function ShowPod() {
-  const data = use(getData());
+  // const data = use(getData());
+  const [data, setData] = useState<RssTypes>();
+  const [isLoading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch("https://newsstand.fly.dev/greenpod")
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data.data);
+        setLoading(false);
+      });
+  }, []);
 
   const [currentPage, setcurrentPage] = useState<number>(1);
   const [itemsPerPage, setitemsPerPage] = useState<number>(8);
@@ -46,7 +59,7 @@ export default function ShowPod() {
   // Get current items
   const indexOfLastItem = currentPage * itemsPerPage; // 6
   const indexOfFirstItem = indexOfLastItem - itemsPerPage; // 0
-  const currentItems: ItemsProps[] = data.items.slice(
+  const currentItems: ItemsProps[] | any = data?.items.slice(
     indexOfFirstItem,
     indexOfLastItem
   );
@@ -55,6 +68,8 @@ export default function ShowPod() {
   const paginate = (pageNumber: number) => {
     setcurrentPage(pageNumber);
   };
+  if (isLoading) return <p>Loading...</p>;
+  if (!data) return <p>No profile data</p>;
 
   return (
     <main className={styles.main}>
