@@ -30,7 +30,7 @@ export interface RssTypes {
 export default function ShowPod({ data }: { data: RssTypes }) {
   const [currentPage, setcurrentPage] = useState<number>(1);
   const [itemsPerPage, setitemsPerPage] = useState<number>(8);
-  console.log(data.items);
+
   // Get current items
   const indexOfLastItem = currentPage * itemsPerPage; // 6
   const indexOfFirstItem = indexOfLastItem - itemsPerPage; // 0
