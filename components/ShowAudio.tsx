@@ -16,16 +16,16 @@ export default function ShowAudio({ items }: { items: ItemsProps }) {
     <main className={styles.main}>
       <div className={styles.cardHold}>
         <h4 className={styles.h4}> {items.title} </h4>
-        <p> - {items.itunes_author} </p>
+
+        <p>- {items.itunes_author}</p>
+
         <audio
           className={styles.audio}
           src={items.enclosures[0].url}
           controls
-          title={`${items.title}.mp3`}
           preload="none"
         ></audio>
 
-        <span onClick={() => setshowModel(true)}> i </span>
         {showModel && (
           <Model setShowModel={setshowModel}>
             {stripHtml(items.description)}
