@@ -1,6 +1,7 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { use, useState } from "react";
 import Globe from "../store/svg/Globe";
 import styles from "../styles/ShowPod.module.scss";
 import Pagination from "./Pagination";
@@ -28,7 +29,15 @@ export interface RssTypes {
   items: ItemsProps[];
 }
 
-export default function ShowPod({ data }: { data: RssTypes }) {
+async function getData() {
+  const res = await fetch("http://localhost:3000/api/hello");
+  const { data }: { data: RssTypes } = await res.json();
+  return data;
+}
+
+export default function ShowPod() {
+  const data = use(getData());
+
   const [currentPage, setcurrentPage] = useState<number>(1);
   const [itemsPerPage, setitemsPerPage] = useState<number>(8);
 
