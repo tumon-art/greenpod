@@ -7,7 +7,7 @@
 }
 .cardHold {
   width: 90%;
-  min-height: 150px;
+  min-height: 170px;
   border: 6px solid green;
   border-radius: 10px 10px;
   padding: 5px 10px;
@@ -19,7 +19,8 @@
   box-shadow: 2px 2px 14px 2px green;
 
   @include screen.devices(sm) {
-    width: 60%;
+    width: 90%;
+    min-height: 180px;
   }
 }
 

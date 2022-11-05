@@ -2,17 +2,39 @@
 
 .main {
   margin: 2em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .mainHead {
-  display: flex;
+  position: relative;
+  padding: 10px 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   justify-content: center;
   align-items: center;
   gap: 1em;
+  border-radius: 10px;
+  overflow: hidden;
+  pointer-events: auto;
+
+  &::before {
+    content: "";
+    background-color: #00ff0009;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    pointer-events: none;
+  }
 }
 
 .mainImg {
   object-fit: cover;
-  border-radius: 50%;
+  display: inline;
+  overflow: hidden;
 }
 
 .audioCardHold {
@@ -20,5 +42,28 @@
   grid-template-columns: 1fr;
   @include screen.devices(md) {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.gridSect2 {
+  h3 {
+    text-align: center;
+  }
+}
+
+.visitWeb {
+  display: flex;
+  gap: 0.5em;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(1, 82, 1);
+  border-radius: 10px;
+  padding: 2px 5px;
+
+  p {
+    padding: 0;
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: bold;
   }
 }

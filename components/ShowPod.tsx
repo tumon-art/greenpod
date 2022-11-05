@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import Globe from "../store/svg/Globe";
 import styles from "../styles/ShowPod.module.scss";
 import Pagination from "./Pagination";
 import ShowAudio from "./ShowAudio";
@@ -48,15 +49,22 @@ export default function ShowPod({ data }: { data: RssTypes }) {
     <main className={styles.main}>
       <div className={styles.mainHead}>
         <Image
-          src={data.image}
           className={styles.mainImg}
-          height="40"
-          width="40"
+          src={data.image}
+          height="70"
+          width="70"
           alt="img"
         />
-        <Link href={data.link}>
+
+        <div className={styles.gridSect2}>
           <h3>{data.title}</h3>
-        </Link>
+          <Link href={data.link} passHref>
+            <div className={styles.visitWeb}>
+              <Globe style={{ color: "green", height: "20px" }} />
+              <p> Visit website</p>
+            </div>
+          </Link>
+        </div>
       </div>
 
       <div className={styles.audioCardHold}>
