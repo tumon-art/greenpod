@@ -21,6 +21,9 @@
   @include screen.devices(sm) {
     width: 60%;
   }
+  span {
+    cursor: pointer;
+  }
 }
 
 .h4 {

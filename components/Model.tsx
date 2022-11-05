@@ -2,8 +2,13 @@ import styles from "../styles/Model.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
-export default function Model({ children }: { children: React.ReactNode }) {
+interface ModelProps {
+  children: React.ReactNode;
+  setShowModel: (arg0: boolean) => void;
+}
+export default function Model({ children, setShowModel }: ModelProps) {
   const [open, setOpen] = useState<boolean>(true);
+
   return (
     <AnimatePresence>
       {open && (
@@ -17,7 +22,10 @@ export default function Model({ children }: { children: React.ReactNode }) {
           exit={{
             opacity: 0,
           }}
-          onClick={() => setOpen(false)}
+          onClick={() => {
+            setOpen(false);
+            setShowModel(false);
+          }}
           className={styles.modelBackdrop}
         >
           <motion.div className={styles.modelContentWrapper}>

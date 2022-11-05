@@ -1,8 +1,17 @@
 import { ItemsProps } from "./ShowPod";
 import styles from "../styles/ShowAudio.module.scss";
+import { useState } from "react";
+import Model from "./Model";
 
 export default function ShowAudio({ items }: { items: ItemsProps }) {
-  console.log(items);
+  const [showModel, setshowModel] = useState<boolean>(false);
+
+  const stripHtml = (htmlString: string): any => {
+    let tmp = document.createElement("div");
+    tmp.innerHTML = htmlString;
+    return tmp.textContent || tmp.innerText || "";
+  };
+
   return (
     <main className={styles.main}>
       <div className={styles.cardHold}>
@@ -14,6 +23,13 @@ export default function ShowAudio({ items }: { items: ItemsProps }) {
           controls
           preload="none"
         ></audio>
+
+        <span onClick={() => setshowModel(true)}> i </span>
+        {showModel && (
+          <Model setShowModel={setshowModel}>
+            {stripHtml(items.description)}
+          </Model>
+        )}
       </div>
     </main>
   );
