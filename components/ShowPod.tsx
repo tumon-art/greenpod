@@ -6,7 +6,6 @@ import Globe from "../store/svg/Globe";
 import styles from "../styles/ShowPod.module.scss";
 import Pagination from "./Pagination";
 import ShowAudio from "./ShowAudio";
-import useSWR from "swr";
 
 export interface ItemsProps {
   title: string;
@@ -34,10 +33,12 @@ export interface RssTypes {
 //   // const res = await fetch("http://localhost:3000/api/hello");
 //   // const res = await fetch("https://newsstand.fly.dev/greenpod");
 //   const res = await fetch("https://greenpod-five.vercel.app/api/hello");
+//   const res = await fetch("https://greenpod.fly.dev/thefirsts");
 //   const { data }: { data: RssTypes } = await res.json();
 //   return data;
 // }
 
+//greenpod.fly.dev/thefirsts
 export default function ShowPod() {
   // const data = use(getData());
   const [data, setData] = useState<RssTypes>();
@@ -45,7 +46,7 @@ export default function ShowPod() {
 
   useEffect(() => {
     setLoading(true);
-    fetch("https://newsstand.fly.dev/greenpod")
+    fetch("https://greenpod.fly.dev/thefirsts")
       .then((res) => res.json())
       .then((data) => {
         setData(data.data);
