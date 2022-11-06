@@ -5,13 +5,12 @@ async function getData() {
   return res.json();
 }
 
-export default async function page() {
+export default async function onepath() {
   const { data } = await getData();
 
   return (
     <div>
-      {" "}
-      <ShowPod data={data} />{" "}
+      <ShowPod data={data} />
     </div>
   );
 }

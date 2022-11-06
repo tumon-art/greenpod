@@ -5,7 +5,7 @@ async function getData() {
   return res.json();
 }
 
-export default async function page() {
+export default async function thefirsts() {
   const { data } = await getData();
   return (
     <div>
