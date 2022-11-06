@@ -7,9 +7,11 @@ async function getData() {
 
 export default async function page() {
   const { data } = await getData();
+
   return (
     <div>
-      <ShowPod data={data} />
+      {" "}
+      <ShowPod data={data} />{" "}
     </div>
   );
 }
