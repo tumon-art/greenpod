@@ -1,4 +1,3 @@
-import ShowPod from "../components/ShowPod";
 import styles from "../styles/Home.module.scss";
 
 // async function getData() {
@@ -8,10 +7,5 @@ import styles from "../styles/Home.module.scss";
 
 export default async function Page() {
   // const { data } = await getData();
-  return (
-    <main>
-      {/* <ShowPod /> */}
-      <ShowPod />
-    </main>
-  );
+  return <main></main>;
 }

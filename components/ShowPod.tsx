@@ -39,20 +39,20 @@ export interface RssTypes {
 // }
 
 //greenpod.fly.dev/thefirsts
-export default function ShowPod() {
+export default function ShowPod({ data }: { data: RssTypes }) {
   // const data = use(getData());
-  const [data, setData] = useState<RssTypes>();
-  const [isLoading, setLoading] = useState(false);
+  // const [data, setData] = useState<RssTypes>();
+  // const [isLoading, setLoading] = useState(false);
 
-  useEffect(() => {
-    setLoading(true);
-    fetch("https://greenpod.fly.dev/thefirsts")
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data.data);
-        setLoading(false);
-      });
-  }, []);
+  // useEffect(() => {
+  //   setLoading(true);
+  //   fetch("https://greenpod.fly.dev/thefirsts")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setData(data.data);
+  //       setLoading(false);
+  //     });
+  // }, []);
 
   const [currentPage, setcurrentPage] = useState<number>(1);
   const [itemsPerPage, setitemsPerPage] = useState<number>(8);
@@ -69,8 +69,8 @@ export default function ShowPod() {
   const paginate = (pageNumber: number) => {
     setcurrentPage(pageNumber);
   };
-  if (isLoading) return <p>Loading...</p>;
-  if (!data) return <p>No profile data</p>;
+  // if (isLoading) return <p>Loading...</p>;
+  // if (!data) return <p>No profile data</p>;
 
   return (
     <main className={styles.main}>
