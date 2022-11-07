@@ -42,7 +42,6 @@
   grid-template-columns: 1fr;
   @include screen.devices(md) {
     grid-template-columns: 1fr 1fr;
-    background-color: rebeccapurple;
   }
 }
 
