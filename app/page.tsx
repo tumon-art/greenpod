@@ -5,8 +5,14 @@ import styles from "../styles/Home.module.scss";
 //   return res.json();
 // }
 
-//3434
 export default async function Page() {
   // const { data } = await getData();
-  return <main></main>;
+
+  return (
+    <main>
+      <div className={styles.container}>
+        <button className={styles.button}>Show More Items</button>
+      </div>
+    </main>
+  );
 }
